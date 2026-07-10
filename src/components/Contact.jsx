@@ -10,8 +10,10 @@ export default function Contact({ email, socials }) {
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
           <a
-            href={`mailto:${email}`}
-            className="rounded-sm border border-blueprint-accent bg-blueprint-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-wide text-blueprint-accent transition-colors hover:bg-blueprint-accent hover:text-blueprint-bgDeep"
+            href={`https://mail.google.com/mail/?view=cm&to=${email}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-sm border border-blueprint-accent bg-blueprint-accent/10 px-5 py-2.5 font-mono text-xs tracking-wide text-blueprint-accent transition-colors hover:bg-blueprint-accent hover:text-blueprint-bgDeep"
           >
             {email}
           </a>
