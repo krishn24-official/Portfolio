@@ -36,6 +36,7 @@ export const portfolioData = {
       stack: ['Python', 'FastAPI', 'React', 'MongoDB', 'Gemini AI'],
       liveUrl: 'https://anime-ai-fe.vercel.app/',
       repoUrl: 'https://github.com/krishn24-official',
+      images: [],
     },
     {
       id: 'proj-02',
@@ -47,6 +48,7 @@ export const portfolioData = {
       stack: ['Python', 'FastAPI', 'PostgreSQL', 'WebSockets'],
       liveUrl: '',
       repoUrl: '',
+      images: [],
     },
     {
       id: 'proj-03',
@@ -58,6 +60,37 @@ export const portfolioData = {
       stack: ['Python', 'NLP', 'Prompt Engineering', 'Machine Learning'],
       liveUrl: '',
       repoUrl: '',
+      images: [],
+    },
+    {
+      id: 'proj-04',
+      title: 'Buddy — Cross-Platform Voice Assistant',
+      summary:
+        'A hands-free, wake-word-activated voice assistant for Windows and Android that opens apps, drafts and sends WhatsApp/Gmail messages, answers questions, screens phone calls, and plays media — with no cloud vendor lock-in.',
+      problem:
+        'Most AI-assistant portfolio projects are a thin prompt wrapped around a chat API. This one needed to solve real systems problems: cross-process audio synchronization, a from-scratch ML pipeline port to a new platform, OS-level permission models, and safety-critical confirmation flows for irreversible actions like sending real emails or answering real calls.',
+      decisions:
+        "Built a Windows client (wake word via openWakeWord, local speech-to-text with faster-whisper, isolated-process text-to-speech) and a standalone Android client with the wake-word model ported by hand from Python to Kotlin/ONNX Runtime. Both talk to a shared FastAPI 'brain' with multi-provider LLM tool-calling (Groq → Gemini → Mistral → Anthropic, with automatic fallback), real Gmail OAuth integration, and a confirm-before-send safety check on every outbound action.",
+      learned:
+        "Reverse-engineered and numerically verified a 3-stage ONNX wake-word pipeline with no existing Android library to lean on. Root-caused a pyttsx3/SAPI5 threading deadlock to a fundamental library limitation and fixed it by isolating text-to-speech in its own process. Designed the multi-provider LLM fallback specifically to survive a live mid-project Groq model-lineup deprecation, and worked through Android's CallScreeningService permission model and a Bluetooth SCO connection race condition for reliable call screening.",
+      stack: [
+        'Python',
+        'FastAPI',
+        'Kotlin',
+        'Android SDK',
+        'ONNX Runtime',
+        'Groq',
+        'Gemini',
+        'Mistral',
+        'Anthropic API',
+        'Gmail API (OAuth2)',
+        'YouTube Data API',
+        'SQLite',
+        'openWakeWord',
+      ],
+      liveUrl: '',
+      repoUrl: 'https://github.com/krishn24-official/Assistant',
+      images: [],
     },
   ],
 }

@@ -9,6 +9,7 @@ import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ChatWidget from './components/ChatWidget'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -48,6 +49,7 @@ export default function App() {
       <Projects projects={data.projects} />
       <Contact email={data.email} socials={data.socials} />
       <Footer name={data.name} />
+      <ChatWidget name={data.name} />
     </div>
   )
 }
