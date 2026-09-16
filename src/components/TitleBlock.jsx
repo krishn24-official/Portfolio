@@ -1,7 +1,4 @@
-export default function TitleBlock({ name, role, location }) {
-  const today = new Date()
-  const dateStr = today.toISOString().slice(0, 10).replace(/-/g, '.')
-
+export default function TitleBlock({ name, role, location, availability = 'Immediate' }) {
   return (
     <div
       className="w-full max-w-xs border border-blueprint-line/30 font-mono text-xs text-blueprint-slate"
@@ -23,8 +20,8 @@ export default function TitleBlock({ name, role, location }) {
           <p className="text-blueprint-line">{location}</p>
         </div>
         <div className="px-3 py-2">
-          <p className="uppercase tracking-wide text-[10px] text-blueprint-slate/70">Rev.</p>
-          <p className="text-blueprint-line">{dateStr}</p>
+          <p className="uppercase tracking-wide text-[10px] text-blueprint-slate/70">Availability</p>
+          <p className="text-blueprint-line">{availability}</p>
         </div>
       </div>
     </div>

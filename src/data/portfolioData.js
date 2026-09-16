@@ -6,9 +6,9 @@
 // ────────────────────────────────────────────────────────────────
 
 export const portfolioData = {
-  name: 'Krishna Rajeshbhai Tandel',
-  role: 'Python Backend & AI Developer',
-  tagline: 'I build scalable REST APIs, Agentic AI pipelines, and real-time systems.',
+  name: 'Krishna Tandel',
+  role: 'Python Full Stack Developer | AI Engineer',
+  tagline: 'I build scalable full-stack applications, AI-powered backends, and real-time systems using Python, FastAPI, and React.',
   location: 'Bilimora, Gujarat',
   email: 'krishtandel24@gmail.com',
   socials: {
@@ -16,13 +16,36 @@ export const portfolioData = {
     linkedin: 'https://www.linkedin.com/in/krisn24',
     resume: '/resume.pdf',
   },
-  about: `I'm a Python & FastAPI backend developer with 6 months of industry experience building production-grade REST APIs, JWT authentication systems, and Agentic AI pipelines using Gemini function-calling. I have designed and deployed scalable backend services with PostgreSQL, MongoDB, and WebSocket integrations, and I am actively seeking a Python Backend or AI Engineer role to deliver reliable, intelligent systems.`,
+  about: `Python Full Stack Developer with 6 months of internship experience building AI-powered applications, REST APIs, authentication systems, and real-time backend services — plus the front-end pages and API integrations that connect them. Experienced with FastAPI, PostgreSQL, MongoDB, WebSockets, React, and modern deployment platforms. Passionate about building production-ready backend systems and AI solutions.`,
   skills: [
     { category: 'Programming Languages', items: ['C', 'Python', 'JavaScript'] },
     { category: 'Frontend', items: ['HTML5', 'CSS', 'React'] },
     { category: 'Backend & Databases', items: ['FastAPI', 'MongoDB', 'PostgreSQL', 'SQL', 'WebSockets'] },
     { category: 'AI & ML', items: ['Machine Learning', 'Agentic AI', 'Prompt Engineering', 'NLP', 'LLM Function Calling'] },
     { category: 'Tools & Deployment', items: ['Git', 'Render', 'Vercel', 'Postman', 'Swagger UI'] },
+  ],
+  
+  experience: [
+    {
+      title: 'Python Developer Intern',
+      company: 'IT Idol Technologies',
+      duration: 'January 2026 – June 2026',
+      bullets: [
+        'Built REST APIs using FastAPI for an inventory management and ticketing system',
+        'Implemented JWT-based authentication',
+        'Designed and managed PostgreSQL and MongoDB databases',
+        'Developed WebSocket modules for real-time notifications and live data updates',
+        'Studied the existing React + Redux Thunk frontend architecture and implemented UI features integrated with the FastAPI backend',
+      ],
+    },
+  ],
+  education: [
+    {
+      degree: 'B.E. in Information Technology',
+      institution: 'Gujarat Technological University',
+      duration: '2022 – 2026',
+      detail: 'CGPA: 9.09',
+    },
   ],
   projects: [
     {
@@ -46,18 +69,6 @@ export const portfolioData = {
       decisions: 'Integrated WebSockets for real-time notifications and live data updates, backed by scalable PostgreSQL databases.',
       learned: 'Learned to design and manage PostgreSQL databases and implement secure JWT-based authentication in a production setting.',
       stack: ['Python', 'FastAPI', 'PostgreSQL', 'WebSockets'],
-      liveUrl: '',
-      repoUrl: '',
-      images: [],
-    },
-    {
-      id: 'proj-03',
-      title: 'AI Agent Prototype',
-      summary: 'A capstone deliverable featuring a working AI agent built using NLP pipelines and prompt engineering during an IBM SkillsBuild internship.',
-      problem: 'Applying prompt engineering techniques and AI agent workflows to practical reasoning tasks.',
-      decisions: 'Utilized industry tools to develop NLP pipelines and LLM-based reasoning for the prototype.',
-      learned: 'Gained practical exposure to LLM-based reasoning and ML model evaluation.',
-      stack: ['Python', 'NLP', 'Prompt Engineering', 'Machine Learning'],
       liveUrl: '',
       repoUrl: '',
       images: [],
@@ -91,6 +102,27 @@ export const portfolioData = {
       liveUrl: '',
       repoUrl: 'https://github.com/krishn24-official/Assistant',
       images: [],
+    },
+    {
+      id: 'proj-05',
+      title: 'Olist E-Commerce Analytics: End-to-End Customer & Revenue Intelligence',
+      summary:
+        'Turned 99K+ raw e-commerce orders into a revenue and retention story using SQL, Python, and Power BI.',
+      problem:
+        'Olist connects thousands of small Brazilian sellers to online shoppers, with order volume scaling rapidly between 2016-2018. This project set out to answer where revenue is concentrated, which categories and customers drive the most value, and how healthy repeat-customer retention is.',
+      decisions:
+        'Loaded 5 relational tables (~250K+ rows) into MySQL, resolved duplicate records and invalid placeholder dates, and indexed foreign keys for fast joins. Wrote SQL using CTEs and window functions (RANK() OVER PARTITION BY) for monthly revenue trends and top spenders. Built an RFM (Recency-Frequency-Monetary) model in pandas to segment ~93,000 customers into 5 groups. Connected Power BI live to MySQL with a custom DAX measure for repeat-customer rate, plus a lightweight Excel pivot summary for non-technical stakeholders.',
+      learned:
+        'Revenue grew ~8x in its first 14 months then stabilized around R$850K-950K/month. Only 3% of ~93,000 customers made a repeat purchase, revealing a major retention opportunity. RFM segmentation identified 15,000+ Champion customers and 13,000+ At Risk customers. Next steps: add KMeans clustering alongside RFM, incorporate payments/reviews data for delivery-satisfaction analysis, and automate the SQL to Python to Power BI refresh pipeline.',
+      stack: ['MySQL', 'Python', 'pandas', 'Power BI', 'Excel', 'Git'],
+      liveUrl: '',
+      repoUrl: 'https://github.com/krishn24-official/Olist-E-Commerce-Analytics',
+      images: [
+        {
+          src: '/projects/proj-05/dashboard.png',
+          alt: 'Olist E-Commerce Analytics Dashboard',
+        },
+      ],
     },
   ],
 }

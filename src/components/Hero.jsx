@@ -22,13 +22,13 @@ export default function Hero({ name, role, tagline, location, socials }) {
           <div className="mt-8 flex flex-wrap gap-4">
             <a
               href="#projects"
-              className="rounded-sm border border-blueprint-accent bg-blueprint-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-wide text-blueprint-accent transition-colors hover:bg-blueprint-accent hover:text-blueprint-bgDeep"
+              className="rounded-sm border border-blueprint-accent bg-blueprint-accent/10 px-5 py-2.5 font-mono text-xs uppercase tracking-wide text-blueprint-accent transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-blueprint-accent hover:text-blueprint-bgDeep hover:shadow-[0_0_16px_rgba(94,168,255,0.35)] active:scale-[0.98]"
             >
               View projects
             </a>
             <a
               href={socials.resume}
-              className="rounded-sm border border-blueprint-line/30 px-5 py-2.5 font-mono text-xs uppercase tracking-wide text-blueprint-line transition-colors hover:border-blueprint-line"
+              className="rounded-sm border border-blueprint-line/30 px-5 py-2.5 font-mono text-xs uppercase tracking-wide text-blueprint-line transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:border-blueprint-line hover:shadow-[0_0_14px_rgba(237,238,240,0.15)] active:scale-[0.98]"
             >
               Download résumé
             </a>

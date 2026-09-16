@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect } from 'react'
 
 const STARTER_QUESTIONS = [
-  'What backend frameworks do you know?',
-  'Tell me about your projects',
-  'How can I contact you?',
+  '🚀 Tell me about Krishna',
+  '💼 Internship experience',
+  '🤖 AI projects',
+  '⚙️ Tech stack',
+  '📄 Resume summary',
+  '📬 Contact information',
 ]
 
 function formatAssistantText(text) {
@@ -65,14 +68,20 @@ function formatAssistantText(text) {
 }
 
 export default function ChatWidget({ name }) {
+  useEffect(() => {
+    const handleOpenChat = () => setIsOpen(true)
+    window.addEventListener('open-portfolio-chat', handleOpenChat)
+    return () => window.removeEventListener('open-portfolio-chat', handleOpenChat)
+  }, [])
   const firstName = name ? name.trim().split(/\s+/)[0] : 'me'
   const [isOpen, setIsOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
+  const greetingAnimatedRef = useRef(false)
   const [messages, setMessages] = useState([
     {
       id: 'welcome',
       role: 'assistant',
-      content: `Hi there! I'm an AI assistant trained on ${firstName}'s portfolio. Ask me anything about their experience, skills, or projects.`,
+      content: "Hi! I'm Krishna's AI Portfolio Assistant. I can answer questions about his skills, experience, projects, resume, and availability.",
     },
   ])
   const [input, setInput] = useState('')
@@ -272,7 +281,7 @@ export default function ChatWidget({ name }) {
         onClick={() => setIsOpen((prev) => !prev)}
         aria-label={isOpen ? 'Close chat assistant' : `Ask about ${name || 'portfolio'}`}
         aria-expanded={isOpen}
-        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-blueprint-accent text-blueprint-bgDeep shadow-xl transition-all duration-200 hover:scale-105 hover:bg-blueprint-accent/90 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blueprint-accent focus-visible:ring-offset-2 focus-visible:ring-offset-blueprint-bg"
+        className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-blueprint-accent text-blueprint-bgDeep shadow-xl transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 hover:bg-blueprint-accent/90 hover:shadow-[0_0_22px_rgba(94,168,255,0.45)] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blueprint-accent focus-visible:ring-offset-2 focus-visible:ring-offset-blueprint-bg"
       >
         {isOpen ? (
           <svg
@@ -304,7 +313,7 @@ export default function ChatWidget({ name }) {
         <div
           role="dialog"
           aria-label={`Chat about ${name}`}
-          className={`fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-lg border border-blueprint-line/15 bg-blueprint-bgDeep font-body shadow-2xl transition-all duration-300 sm:right-6 ${
+          className={`fixed bottom-24 right-4 z-50 flex flex-col overflow-hidden rounded-lg border border-blueprint-line/15 bg-blueprint-bgDeep font-body shadow-2xl animate-chat-open sm:right-6 ${
             isExpanded
               ? 'h-[calc(100vh-7.5rem)] max-h-[750px] w-[calc(100vw-2rem)] sm:w-[32rem] md:w-[38rem] lg:w-[44rem]'
               : 'h-[28rem] w-[calc(100vw-2rem)] max-w-[22rem] sm:w-[22rem]'
@@ -318,7 +327,7 @@ export default function ChatWidget({ name }) {
               </span>
               <div className="flex items-center gap-1.5 font-mono text-[11px] text-blueprint-slate">
                 <span className="h-1.5 w-1.5 rounded-full bg-blueprint-accent" />
-                <span>Grounded in portfolio data</span>
+                <span>Powered by RAG over Krishna's portfolio data.</span>
               </div>
             </div>
             <div className="flex items-center gap-1">
@@ -571,11 +580,20 @@ export default function ChatWidget({ name }) {
               <div className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
                 {messages.map((m, idx) => {
                   const isContact = isContactResponse(m, idx, messages)
+                  let messageAnimationClass = 'animate-message-in'
+                  if (m.id === 'welcome') {
+                    if (!greetingAnimatedRef.current) {
+                      messageAnimationClass = 'animate-message-in'
+                      greetingAnimatedRef.current = true
+                    } else {
+                      messageAnimationClass = ''
+                    }
+                  }
 
                   return (
                     <div
                       key={m.id}
-                      className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'}`}
+                      className={`flex flex-col ${m.role === 'user' ? 'items-end' : 'items-start'} ${messageAnimationClass}`}
                     >
                       <div
                         className={`max-w-[85%] rounded-lg px-3.5 py-2.5 leading-relaxed break-words whitespace-pre-wrap ${
@@ -745,9 +763,10 @@ export default function ChatWidget({ name }) {
                           type="button"
                           disabled={loading}
                           onClick={() => sendMessage(question)}
-                          className="rounded border border-blueprint-accent/30 bg-blueprint-accent/5 px-3 py-2 text-left font-mono text-xs text-blueprint-accent transition-colors hover:border-blueprint-accent hover:bg-blueprint-accent/15 disabled:opacity-50"
+                          className="group flex items-center justify-between rounded border border-blueprint-accent/30 bg-blueprint-accent/5 px-3 py-2 text-left font-mono text-xs text-blueprint-accent transition-all duration-200 hover:border-blueprint-accent hover:bg-blueprint-accent/15 disabled:opacity-50"
                         >
-                          {question} &rarr;
+                          <span>{question}</span>
+                          <span className="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
                         </button>
                       ))}
                       <button

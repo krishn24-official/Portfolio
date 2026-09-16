@@ -1,15 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { fetchPortfolioData } from './store/portfolioActions'
 import Loader from './components/Loader'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Skills from './components/Skills'
-import Projects from './components/Projects'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ChatWidget from './components/ChatWidget'
+import Home from './pages/Home'
+import ProjectDetail from './pages/ProjectDetail'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -35,21 +33,19 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-blueprint-bg">
-      <Navbar name={data.name} />
-      <Hero
-        name={data.name}
-        role={data.role}
-        tagline={data.tagline}
-        location={data.location}
-        socials={data.socials}
-      />
-      <About about={data.about} />
-      <Skills skills={data.skills} />
-      <Projects projects={data.projects} />
-      <Contact email={data.email} socials={data.socials} />
-      <Footer name={data.name} />
-      <ChatWidget name={data.name} />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-blueprint-bg flex flex-col justify-between">
+        <div>
+          <Navbar name={data.name} />
+          <Routes>
+            <Route path="/" element={<Home data={data} />} />
+            <Route path="/projects/:id" element={<ProjectDetail data={data} />} />
+            <Route path="*" element={<Home data={data} />} />
+          </Routes>
+        </div>
+        <Footer name={data.name} />
+        <ChatWidget name={data.name} />
+      </div>
+    </BrowserRouter>
   )
 }
