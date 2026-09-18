@@ -66,7 +66,6 @@ const ICON_MAP = {
   onnx: SiOnnx,
 }
 
-// Brand colors applied exclusively on hover
 const BRAND_COLORS = {
   python: '#3776AB',
   fastapi: '#05998B',

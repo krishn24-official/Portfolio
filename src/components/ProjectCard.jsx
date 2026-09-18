@@ -12,7 +12,6 @@ export default function ProjectCard({ project, index }) {
       className="group flex flex-col justify-between rounded-sm border border-blueprint-line/15 bg-blueprint-bgDeep/30 p-5 transition-all duration-200 hover:-translate-y-1 hover:border-blueprint-accent/50 hover:bg-blueprint-bgDeep/60 hover:shadow-xl hover:shadow-black/25"
     >
       <div>
-        {/* Top bar: Number, Featured Badge & External Badges */}
         <div className="mb-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-blueprint-slate">{num}</span>
@@ -48,7 +47,6 @@ export default function ProjectCard({ project, index }) {
           </div>
         </div>
 
-        {/* Thumbnail area: enlarged for more presence with matted frame */}
         {hasImages ? (
           <div className="mb-4 aspect-[16/10] w-full overflow-hidden rounded border border-blueprint-line/15 bg-blueprint-bg p-1.5 transition-colors duration-200 group-hover:border-blueprint-accent/40">
             <div className="h-full w-full overflow-hidden rounded bg-blueprint-bgDeep">
@@ -74,18 +72,15 @@ export default function ProjectCard({ project, index }) {
           </div>
         )}
 
-        {/* Title */}
         <h3 className="font-display text-lg font-medium text-blueprint-line transition-colors duration-200 group-hover:text-blueprint-accent mb-2">
           {project.title}
         </h3>
 
-        {/* One-line summary */}
         <p className="line-clamp-2 text-sm leading-relaxed text-blueprint-slate mb-4">
           {project.summary}
         </p>
       </div>
 
-      {/* Footer: Stack icons (up to 4) + more count & view details */}
       <div className="mt-2 flex items-center justify-between border-t border-blueprint-line/10 pt-3">
         <div className="flex flex-wrap items-center gap-1.5">
           {project.stack.slice(0, 4).map((tech) => (

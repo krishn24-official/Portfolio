@@ -12,7 +12,6 @@ export default function ProjectDetail({ data }) {
   const projectIndex = projects.findIndex((p) => p.id === id)
   const project = projects[projectIndex]
 
-  // Scroll to top on id change
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [id])
@@ -46,7 +45,6 @@ export default function ProjectDetail({ data }) {
 
   return (
     <main className="mx-auto max-w-5xl px-6 py-16">
-      {/* Back link */}
       <div className="mb-8">
         <Link
           to="/#projects"
@@ -57,7 +55,6 @@ export default function ProjectDetail({ data }) {
         </Link>
       </div>
 
-      {/* Header */}
       <header className="mb-10">
         <p className="font-mono text-xs uppercase tracking-widest text-blueprint-slate mb-2">
           Project {num} / {String(projects.length).padStart(2, '0')}
@@ -69,7 +66,6 @@ export default function ProjectDetail({ data }) {
           {project.summary}
         </p>
 
-        {/* Live & Code action buttons */}
         <div className="mt-6 flex flex-wrap gap-3 font-mono text-xs">
           {project.liveUrl && (
             <a
@@ -94,7 +90,6 @@ export default function ProjectDetail({ data }) {
         </div>
       </header>
 
-      {/* Matted Screenshots Gallery (if project has images) */}
       {images.length > 0 && (
         <section aria-label="Project Screenshots" className="mb-12">
           <h2 className="font-mono text-xs uppercase tracking-widest text-blueprint-slate mb-4">
@@ -127,7 +122,6 @@ export default function ProjectDetail({ data }) {
         </section>
       )}
 
-      {/* Technical Deep Dive Sections */}
       <section className="mb-12 grid gap-6 sm:grid-cols-3 border-y border-blueprint-line/10 py-10">
         <div>
           <h2 className="font-mono text-xs uppercase tracking-wider text-blueprint-accent mb-2">
@@ -157,7 +151,6 @@ export default function ProjectDetail({ data }) {
         </div>
       </section>
 
-      {/* Full Tech Stack */}
       <section className="mb-14">
         <h2 className="font-mono text-xs uppercase tracking-widest text-blueprint-slate mb-4">
           Technologies & Architecture
@@ -169,7 +162,6 @@ export default function ProjectDetail({ data }) {
         </div>
       </section>
 
-      {/* Previous / Next Project Navigation */}
       <nav className="flex items-center justify-between border-t border-blueprint-line/10 pt-8 font-mono text-xs">
         {prevProject ? (
           <Link
@@ -198,7 +190,6 @@ export default function ProjectDetail({ data }) {
         )}
       </nav>
 
-      {/* Lightbox Modal */}
       <Lightbox
         images={images}
         currentIndex={lightboxIndex}

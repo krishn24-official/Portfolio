@@ -12,7 +12,6 @@ const STARTER_QUESTIONS = [
 function formatAssistantText(text) {
   if (!text) return ''
 
-  // Split on URLs (http/https) and Email addresses
   const tokenRegex = /(https?:\/\/[^\s<>()]+|[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)/g
   const parts = text.split(tokenRegex)
 
@@ -88,7 +87,6 @@ export default function ChatWidget({ name }) {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  // Direct Contact Form State
   const [isContactMode, setIsContactMode] = useState(false)
   const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' })
   const [contactValidationErrors, setContactValidationErrors] = useState({})
@@ -191,7 +189,6 @@ export default function ChatWidget({ name }) {
     }
   }
 
-  // Contact Form Validation & Submission
   const validateContact = () => {
     const errors = {}
     if (!contactForm.name.trim()) {
@@ -257,7 +254,6 @@ export default function ChatWidget({ name }) {
     }
   }
 
-  // Detect whether this assistant response is answering how to contact
   const isContactResponse = (m, idx, all) => {
     if (m.role !== 'assistant') return false
     const lower = m.content.toLowerCase()
@@ -275,7 +271,6 @@ export default function ChatWidget({ name }) {
 
   return (
     <>
-      {/* Floating Toggle Button */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
@@ -308,7 +303,6 @@ export default function ChatWidget({ name }) {
         )}
       </button>
 
-      {/* Chat Panel */}
       {isOpen && (
         <div
           role="dialog"
@@ -319,7 +313,6 @@ export default function ChatWidget({ name }) {
               : 'h-[28rem] w-[calc(100vw-2rem)] max-w-[22rem] sm:w-[22rem]'
           }`}
         >
-          {/* Header */}
           <div className="flex items-center justify-between border-b border-blueprint-line/10 bg-blueprint-bg px-4 py-3">
             <div className="flex flex-col">
               <span className="font-display text-sm font-semibold tracking-wide text-blueprint-line">
@@ -331,7 +324,6 @@ export default function ChatWidget({ name }) {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              {/* Expand / Restore Size Button */}
               <button
                 type="button"
                 onClick={() => setIsExpanded((prev) => !prev)}
@@ -372,7 +364,6 @@ export default function ChatWidget({ name }) {
                 )}
               </button>
 
-              {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
@@ -395,10 +386,8 @@ export default function ChatWidget({ name }) {
             </div>
           </div>
 
-          {/* Conditional Content: Dedicated Contact View vs Normal Chat View */}
           {isContactMode ? (
             <div className="flex flex-1 flex-col overflow-hidden">
-              {/* Contact Subheader */}
               <div className="flex items-center justify-between border-b border-blueprint-line/10 bg-blueprint-bg/60 px-4 py-2">
                 <span className="font-mono text-xs text-blueprint-line font-medium">
                   Send message to {firstName}
@@ -417,7 +406,6 @@ export default function ChatWidget({ name }) {
               </div>
 
               {contactSuccess ? (
-                /* Success Confirmation View */
                 <div className="flex flex-1 flex-col items-center justify-center p-6 text-center">
                   <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-full border border-blueprint-accent bg-blueprint-accent/10 text-blueprint-accent">
                     <svg
@@ -450,7 +438,6 @@ export default function ChatWidget({ name }) {
                   </button>
                 </div>
               ) : (
-                /* Full Contact Form View */
                 <form
                   onSubmit={handleContactSubmit}
                   className="flex flex-1 flex-col justify-between overflow-y-auto p-4 space-y-3"
@@ -462,7 +449,6 @@ export default function ChatWidget({ name }) {
                       </div>
                     )}
 
-                    {/* Name field */}
                     <div>
                       <label className="block font-mono text-xs text-blueprint-slate mb-1">
                         Your Name *
@@ -488,7 +474,6 @@ export default function ChatWidget({ name }) {
                       )}
                     </div>
 
-                    {/* Email field */}
                     <div>
                       <label className="block font-mono text-xs text-blueprint-slate mb-1">
                         Your Email *
@@ -513,7 +498,6 @@ export default function ChatWidget({ name }) {
                       )}
                     </div>
 
-                    {/* Message field */}
                     <div>
                       <div className="flex items-center justify-between mb-1 font-mono text-xs text-blueprint-slate">
                         <span>Message *</span>
@@ -541,7 +525,6 @@ export default function ChatWidget({ name }) {
                     </div>
                   </div>
 
-                  {/* Actions */}
                   <div className="flex items-center justify-end gap-2 pt-2 border-t border-blueprint-line/10">
                     <button
                       type="button"
@@ -574,9 +557,7 @@ export default function ChatWidget({ name }) {
               )}
             </div>
           ) : (
-            /* Normal Chat View */
             <>
-              {/* Messages list */}
               <div className="flex-1 space-y-3 overflow-y-auto p-4 text-sm">
                 {messages.map((m, idx) => {
                   const isContact = isContactResponse(m, idx, messages)
@@ -604,7 +585,6 @@ export default function ChatWidget({ name }) {
                       >
                         {m.role === 'user' ? m.content : formatAssistantText(m.content)}
 
-                        {/* Inline Contact Form directly attached to 'How to contact' answers */}
                         {isContact && (
                           <div className="mt-3 border-t border-blueprint-line/15 pt-3">
                             {contactSuccess ? (
@@ -750,7 +730,6 @@ export default function ChatWidget({ name }) {
                   )
                 })}
 
-                {/* Starter Questions (shown only before user's first message) */}
                 {!hasUserMessage && (
                   <div className="pt-2">
                     <p className="mb-2 font-mono text-[11px] text-blueprint-slate">
@@ -784,7 +763,6 @@ export default function ChatWidget({ name }) {
                   </div>
                 )}
 
-                {/* Loading Indicator (Three-dot bounce) */}
                 {loading && (
                   <div className="flex items-start">
                     <div className="flex items-center gap-1.5 rounded-lg rounded-tl-sm border border-blueprint-line/15 bg-blueprint-bg px-4 py-3">
@@ -807,7 +785,6 @@ export default function ChatWidget({ name }) {
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Inline Error */}
               {error && (
                 <div className="flex items-center justify-between border-t border-blueprint-amber/20 bg-blueprint-amber/10 px-3 py-2 font-mono text-xs text-blueprint-amber">
                   <span>{error}</span>
@@ -821,7 +798,6 @@ export default function ChatWidget({ name }) {
                 </div>
               )}
 
-              {/* Input Form */}
               <div className="border-t border-blueprint-line/15 bg-blueprint-bg p-3">
                 <div className="flex items-end gap-2">
                   <textarea

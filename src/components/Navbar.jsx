@@ -101,7 +101,6 @@ export default function Navbar({ name }) {
                   }`}
                 >
                   {link.label}
-                  {/* Underline grows left-to-right on hover or stays visible when active */}
                   <span
                     className={`absolute bottom-0 left-0 h-[2px] w-full bg-blueprint-accent transition-transform duration-200 origin-left ${
                       isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'

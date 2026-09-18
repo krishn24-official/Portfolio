@@ -36,7 +36,6 @@ export default function Lightbox({
       onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center bg-blueprint-bgDeep/90 backdrop-blur-sm p-4 sm:p-6"
     >
-      {/* Close button */}
       <button
         type="button"
         onClick={onClose}
@@ -56,7 +55,6 @@ export default function Lightbox({
         </svg>
       </button>
 
-      {/* Prev button */}
       {images.length > 1 && (
         <button
           type="button"
@@ -80,7 +78,6 @@ export default function Lightbox({
         </button>
       )}
 
-      {/* Next button */}
       {images.length > 1 && (
         <button
           type="button"
@@ -104,7 +101,6 @@ export default function Lightbox({
         </button>
       )}
 
-      {/* Matted Full-size Image Box */}
       <div
         onClick={(e) => e.stopPropagation()}
         className="flex max-h-[90vh] max-w-[90vw] flex-col items-center overflow-hidden rounded-lg border border-blueprint-line/15 bg-blueprint-bg p-3 sm:p-4 shadow-2xl shadow-black/40"

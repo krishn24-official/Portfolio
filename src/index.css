@@ -22,7 +22,6 @@ body {
   background-size: 32px 32px;
 }
 
-/* ─── Micro-Interactions & Lightweight Keyframes ─── */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(20px);

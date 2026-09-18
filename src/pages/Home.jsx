@@ -13,7 +13,6 @@ export default function Home({ data }) {
 
   useEffect(() => {
     if (location.hash) {
-      // Small timeout to ensure DOM has rendered
       const timeout = setTimeout(() => {
         const element = document.querySelector(location.hash)
         if (element) {
@@ -26,7 +25,6 @@ export default function Home({ data }) {
     }
   }, [location.hash, location.pathname])
 
-  // Global section reveal observer (animates once only)
   useEffect(() => {
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReduced) {
@@ -70,7 +68,6 @@ export default function Home({ data }) {
         socials={data.socials}
       />
 
-      {/* Chatbot Intro Callout */}
       <div className="border-b border-blueprint-line/10 bg-blueprint-bgDeep/40">
         <div className="mx-auto max-w-5xl px-6 py-4">
           <button

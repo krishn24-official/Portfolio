@@ -1,10 +1,3 @@
-// ────────────────────────────────────────────────────────────────
-// EDIT THIS FILE with your real information. Everything on the site
-// is rendered from this object, dispatched through Redux Thunk as if
-// it were an API response (see store/portfolioActions.js). Swap the
-// fake delay/fetch below for a real API or CMS call whenever you have one.
-// ────────────────────────────────────────────────────────────────
-
 export const portfolioData = {
   name: 'Krishna Tandel',
   role: 'Python Full Stack Developer | AI Engineer',
@@ -59,7 +52,28 @@ export const portfolioData = {
       stack: ['Python', 'FastAPI', 'React', 'MongoDB', 'Gemini AI'],
       liveUrl: 'https://anime-ai-fe.vercel.app/',
       repoUrl: 'https://github.com/krishn24-official',
-      images: [],
+      images: [
+        {
+          src: '/projects/proj-01/trending-now.png',
+          alt: 'AniVerse Dashboard - Trending Now Shows & Movies',
+        },
+        {
+          src: '/projects/proj-01/todays-releases.png',
+          alt: "AniVerse Releases & AI Companion Assistant",
+        },
+        {
+          src: '/projects/proj-01/entertainment-news.png',
+          alt: 'Otaku Tribune News - Latest Entertainment & Movie Updates',
+        },
+        {
+          src: '/projects/proj-01/anime-news.png',
+          alt: 'Otaku Tribune News - Anime Feed & Industry Announcements',
+        },
+        {
+          src: '/projects/proj-01/upcoming-schedule.png',
+          alt: 'Upcoming Schedule - Release Calendar & Character Birthdays',
+        },
+      ],
     },
     {
       id: 'proj-02',
@@ -127,8 +141,6 @@ export const portfolioData = {
   ],
 }
 
-// Simulates a network request. Swap this implementation for a real
-// fetch('/api/portfolio') call whenever this is backed by a real API.
 export function fetchPortfolioFromServer() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
