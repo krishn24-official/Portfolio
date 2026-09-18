@@ -134,7 +134,27 @@ export const portfolioData = {
       images: [
         {
           src: '/projects/proj-05/dashboard.png',
-          alt: 'Olist E-Commerce Analytics Dashboard',
+          alt: 'Olist E-Commerce Analytics Dashboard Overview',
+        },
+        {
+          src: '/projects/proj-05/revenue-growth-timeline.png',
+          alt: 'Monthly Revenue Growth & Trend Timeline (2017-2018)',
+        },
+        {
+          src: '/projects/proj-05/monthly-revenue-seasonality.png',
+          alt: 'Monthly Revenue Seasonality Curve',
+        },
+        {
+          src: '/projects/proj-05/top-categories-by-revenue.png',
+          alt: 'Top 10 Product Categories by Revenue',
+        },
+        {
+          src: '/projects/proj-05/customer-rfm-segmentation.png',
+          alt: 'Customer RFM Segmentation Breakdown',
+        },
+        {
+          src: '/projects/proj-05/excel-pivot-analysis.png',
+          alt: 'Excel Pivot Table & Revenue Summary',
         },
       ],
     },
